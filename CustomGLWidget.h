@@ -8,7 +8,7 @@
 #include <QOpenGLShader>
 #include <QOpenGLShaderProgram>
 #include <QTimer>
-#include <QTime>
+#include <QElapsedTimer>
 
 
 class CustomGLWidget : public QOpenGLWidget, public QOpenGLFunctions_4_5_Core
@@ -16,15 +16,10 @@ class CustomGLWidget : public QOpenGLWidget, public QOpenGLFunctions_4_5_Core
     Q_OBJECT
 public:
     explicit CustomGLWidget(QWidget* parent = nullptr);
-    enum Shape{
-        None,
-        Triangle,
-        Rectangle,
-        Circle
-    };
+    ~CustomGLWidget();
 
-    // 通过EBO绘制矩形
-    void drawShape(Shape shape);
+
+public slots:
     void setWireframe(bool wireframe);
 
 
@@ -37,30 +32,20 @@ protected:
     virtual void resizeGL(int w, int h) override;
 
 private:
-    void initGL();
-    void initGLDrawPrepare();
+    void initShader();
+    // 绘制静态平面三角形
+    void drawDataInit();
 
 
 private:
-    //OpenGL
-    GLuint m_VBOs[3];
-    GLuint m_VAOs[3];
-    GLuint m_VBO;
-    GLuint m_VAO;
-    GLuint m_EBO;
-
-    // draw Shape
-    Shape m_shape;
-
     // time
-    qint64 m_time = 0;
-    QTimer *m_timer = nullptr;
+    QElapsedTimer m_elapsedTime;
 
     // QOpenGL
     QOpenGLVertexArrayObject m_qvao;
     QOpenGLBuffer m_qvbo;
-    QOpenGLShaderProgram shader;
-    QOpenGLShaderProgram shader1;
+    QOpenGLBuffer m_qebo;
+    QOpenGLShaderProgram m_shaderProgram;
 
 
 

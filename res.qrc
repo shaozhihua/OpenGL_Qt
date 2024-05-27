@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/">
-        <file>bin/shader/triangle.frag</file>
-        <file>bin/shader/triangle.vert</file>
-        <file>bin/shader/triangle1.frag</file>
+        <file>res/fill.png</file>
+        <file>bin/shader/colorfulTriangle.vert</file>
+        <file>bin/shader/colorfulTriangle.frag</file>
     </qresource>
 </RCC>

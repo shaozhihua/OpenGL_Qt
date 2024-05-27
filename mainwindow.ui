@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>751</width>
+    <height>411</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,36 +19,60 @@
      <widget class="QWidget" name="widget" native="true">
       <property name="minimumSize">
        <size>
-        <width>120</width>
+        <width>200</width>
         <height>0</height>
        </size>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <widget class="QPushButton" name="pushButton_3">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>40</height>
+          </size>
+         </property>
          <property name="text">
-          <string>绘制二维图元</string>
+          <string>静态平面三角形</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="pushButton">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>40</height>
+          </size>
+         </property>
          <property name="text">
-          <string>绘制三角形</string>
+          <string>静态平面矩形</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_2">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>40</height>
+          </size>
+         </property>
          <property name="text">
-          <string>清除</string>
+          <string>彩绘三角形</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btn_wireFrame">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>40</height>
+          </size>
+         </property>
          <property name="text">
-          <string>填充和线框</string>
+          <string>待定</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -72,13 +96,38 @@
      </widget>
     </item>
     <item>
-     <widget class="CustomGLWidget" name="openGLWidget">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex">
+       <number>0</number>
       </property>
+      <widget class="QWidget" name="page">
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="CustomGLWidget" name="GLWgt_Triangle">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_2">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="CustomGLWgt_Rect" name="GLWgt_Rectangle"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page_3">
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="CustomGLWgt_colofulTri" name="GLWgt_colorfulTriangle"/>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -88,12 +137,42 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>751</width>
      <height>17</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action"/>
+  </widget>
+  <action name="action">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/res/fill.png</normaloff>:/res/fill.png</iconset>
+   </property>
+   <property name="text">
+    <string>填充和线框</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -101,7 +180,19 @@
    <extends>QOpenGLWidget</extends>
    <header>CustomGLWidget.h</header>
   </customwidget>
+  <customwidget>
+   <class>CustomGLWgt_Rect</class>
+   <extends>QOpenGLWidget</extends>
+   <header>CustomGLWgt_Rect.h</header>
+  </customwidget>
+  <customwidget>
+   <class>CustomGLWgt_colofulTri</class>
+   <extends>QOpenGLWidget</extends>
+   <header>CustomGLWgt_colofulTri.h</header>
+  </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

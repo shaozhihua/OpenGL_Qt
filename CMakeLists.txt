@@ -46,8 +46,10 @@ else()
     else()
         add_executable(OpenGL_Qt
             ${PROJECT_SOURCES}
-            CustomGLWidget.h CustomGLWidget.cpp
             res.qrc
+            CustomGLWidget.h CustomGLWidget.cpp
+            CustomGLWgt_Rect.h CustomGLWgt_Rect.cpp
+            CustomGLWgt_colofulTri.h CustomGLWgt_colofulTri.cpp
         )
     endif()
 endif()
