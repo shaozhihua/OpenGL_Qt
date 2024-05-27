@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include "CustomGLWidget.h"
+#include "CustomGLWgt_Triangle.h"
 #include "CustomGLWgt_Rect.h"
 #include "CustomGLWgt_colofulTri.h"
 

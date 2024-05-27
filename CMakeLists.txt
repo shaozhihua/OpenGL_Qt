@@ -14,11 +14,10 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
 add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 
-#find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets OpenGL)
-#find_package(Qt5 REQUIRED COMPONENTS Widgets OpenGL)
-
-find_package(QT NAMES Qt5 REQUIRED COMPONENTS Widgets OpenGL )
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets OpenGL )
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets OpenGL )
+
+include_directories(${PROJECT_SOURCE_DIR}/exampleOpenGLWidgets)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -47,9 +46,12 @@ else()
         add_executable(OpenGL_Qt
             ${PROJECT_SOURCES}
             res.qrc
-            CustomGLWidget.h CustomGLWidget.cpp
-            CustomGLWgt_Rect.h CustomGLWgt_Rect.cpp
-            CustomGLWgt_colofulTri.h CustomGLWgt_colofulTri.cpp
+            exampleOpenGLWidgets/CustomGLWgt_Triangle.h
+            exampleOpenGLWidgets/CustomGLWgt_Triangle.cpp
+            exampleOpenGLWidgets/CustomGLWgt_Rect.h
+            exampleOpenGLWidgets/CustomGLWgt_Rect.cpp
+            exampleOpenGLWidgets/CustomGLWgt_colofulTri.h
+            exampleOpenGLWidgets/CustomGLWgt_colofulTri.cpp
         )
     endif()
 endif()

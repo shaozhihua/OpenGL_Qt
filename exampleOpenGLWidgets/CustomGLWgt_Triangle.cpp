@@ -1,4 +1,4 @@
-#include "CustomGLWidget.h"
+#include "CustomGLWgt_Triangle.h"
 #include <QDebug>
 #include <QVector4D>
 #include <QtMath>
